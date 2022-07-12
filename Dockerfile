@@ -14,7 +14,7 @@ RUN apt update && \
 
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
     /bin/bash ~/miniconda.sh -b -p /opt/conda && \
-    /opt/conda/bin/conda env create -f /opt/conda_env/tensorrt7.yaml && \
+    /opt/conda/bin/conda env create -f /opt/conda_env/bev.yaml && \
     /opt/conda/bin/conda init bash && \
     echo "conda deactivate" >> /root/.bashrc
 

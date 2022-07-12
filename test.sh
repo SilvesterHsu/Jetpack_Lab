@@ -4,6 +4,6 @@ set -e
 
 eval "$(conda shell.bash hook)"
 source /opt/conda/etc/profile.d/conda.sh
-conda activate tensorrt7
+conda activate bev
 
 # python3.7 /test.py
