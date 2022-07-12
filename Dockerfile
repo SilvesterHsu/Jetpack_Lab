@@ -5,6 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 ADD conda_env /opt/conda_env
 
 RUN rm /etc/apt/sources.list.d/cuda.list && apt-get clean && apt-get update
+
 RUN apt update && \
     apt install build-essential \
     wget \
@@ -15,13 +16,14 @@ RUN apt update && \
 
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
     /bin/bash ~/miniconda.sh -b -p /opt/conda && \
-    /opt/conda/bin/conda env create -f /opt/conda_env/bev.yaml && \
-    /opt/conda/bin/conda init bash && \
-    echo "conda deactivate" >> /root/.bashrc
+    conda config --system --prepend channels conda-forge && \
+    conda config --system --set auto_update_conda false && \
+    conda config --system --set show_channel_urls true && \
+    conda clean -tipsy
 
-RUN /opt/conda/bin/conda env create -f /opt/conda_env/traffic.yaml && \
-    /opt/conda/bin/conda init bash && \
-    echo "conda deactivate" >> /root/.bashrc
+RUN /opt/conda/bin/conda env create -f /opt/conda_env/bev.yaml
+
+RUN /opt/conda/bin/conda env create -f /opt/conda_env/traffic.yaml
 
 ENV PATH /opt/conda/bin:/usr/local/cuda/bin:/usr/local/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/lib:/usr/local/cuda/lib64
