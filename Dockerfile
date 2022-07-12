@@ -4,7 +4,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 ADD conda_env /opt/conda_env
 
-RUN rm /etc/apt/sources.list.d/nvidia-ml.list && apt-get clean && apt-get update
+RUN rm /etc/apt/sources.list.d/cuda.list && apt-get clean && apt-get update
 RUN apt update && \
     apt install build-essential \
     wget \
