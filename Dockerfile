@@ -19,6 +19,10 @@ RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86
     /opt/conda/bin/conda init bash && \
     echo "conda deactivate" >> /root/.bashrc
 
+RUN /opt/conda/bin/conda env create -f /opt/conda_env/traffic.yaml && \
+    /opt/conda/bin/conda init bash && \
+    echo "conda deactivate" >> /root/.bashrc
+
 ENV PATH /opt/conda/bin:/usr/local/cuda/bin:/usr/local/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/lib:/usr/local/cuda/lib64
 ENV LIBRARY_PATH /usr/local/cuda/lib64:/usr/local/cuda/lib64/stubs:/usr/local/lib
