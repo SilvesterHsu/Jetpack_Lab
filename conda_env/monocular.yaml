@@ -91,10 +91,6 @@ dependencies:
     - matplotlib-inline==0.1.3
     - mccabe==0.6.1
     - mistune==0.8.4
-    - mmcv-full==1.4.0
-    - mmdet==2.19.0
-    - mmdet3d==0.18.0
-    - mmsegmentation==0.20.0
     - mypy-extensions==0.4.3
     - nbclassic==0.3.7
     - nbclient==0.6.0
@@ -193,4 +189,8 @@ dependencies:
     - yacs==0.1.8
     - yapf==0.32.0
     - zipp==3.8.0
+    - mmcv-full==1.4.0
+    - mmdet==2.19.0
+    - mmdet3d==0.18.0
+    - mmsegmentation==0.20.0
 prefix: /opt/conda/envs/monocular
