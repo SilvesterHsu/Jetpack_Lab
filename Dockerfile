@@ -16,14 +16,19 @@ RUN apt update && \
 
 RUN wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda.sh && \
     /bin/bash ~/miniconda.sh -b -p /opt/conda && \
-    conda config --system --prepend channels conda-forge && \
-    conda config --system --set auto_update_conda false && \
-    conda config --system --set show_channel_urls true && \
-    conda clean -tipsy
+    /opt/conda/bin/conda config --system --prepend channels conda-forge && \
+    /opt/conda/bin/conda config --system --set auto_update_conda false && \
+    /opt/conda/bin/conda config --system --set show_channel_urls true && \
+    /opt/conda/bin/conda clean -tipsy && \
+    rm ~/miniconda.sh
+
+ENV PATH /opt/conda/bin:$PATH
 
 RUN /opt/conda/bin/conda env create -f /opt/conda_env/bev.yaml
 
 RUN /opt/conda/bin/conda env create -f /opt/conda_env/traffic.yaml
+
+RUN /opt/conda/bin/conda env create -f /opt/conda_env/monocular.yaml
 
 ENV PATH /opt/conda/bin:/usr/local/cuda/bin:/usr/local/bin:$PATH
 ENV LD_LIBRARY_PATH /usr/local/lib:/usr/local/cuda/lib64

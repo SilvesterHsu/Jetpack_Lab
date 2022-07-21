@@ -196,4 +196,4 @@ dependencies:
     - widgetsnbextension==3.6.0
     - wrapt==1.14.1
     - zipp==3.7.0
-prefix: /root/anaconda3/envs/bev
+prefix: /opt/conda/envs/bev
